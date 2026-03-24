@@ -3,7 +3,7 @@ Logistics tools hub for operational support.
 
 ## 01. Route Auditing
 
-Operational support tool developed to assist in the auditing/customs process and cart checking, especially in situations involving system issues, counting discrepancies, or errors when drivers submit package counts.
+Operational support tool developed to assist in the balancing/audit process and cart checking, especially in situations involving system issues, counting discrepancies, or errors when drivers submit package counts.
 
 The main goal is to ensure that the route is properly audited, allowing the operator to perform the verification quickly and efficiently through an intelligent checklist logic.
 
