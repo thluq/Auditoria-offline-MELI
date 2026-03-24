@@ -50,6 +50,7 @@ function lerArquivo(input) {
 
 // --- AUDITORIA ATIVA (Bipagem) ---
 function adicionarBip(idSujo) {
+    // Bloqueio de DANFE (44 dígitos)
     if (/^\d{44}$/.test(idSujo)) {
         bipsExtras.unshift({ id: "DANFE DETECTADA", idFull: idSujo, tipo: 'Inválido', cor: '#f23d4f' });
     } 
@@ -64,10 +65,9 @@ function adicionarBip(idSujo) {
                 return;
             }
 
-            if (basePrevista.includes(idLimpo)) {
-                bipsRealizados.add(idLimpo);
-            } else {
-                bipsRealizados.add(idLimpo);
+            bipsRealizados.add(idLimpo);
+
+            if (!basePrevista.includes(idLimpo)) {
                 bipsExtras.unshift({ id: idLimpo, idFull: idLimpo, tipo: 'A Mais', cor: '#ff9800' });
             }
         } else {
@@ -84,6 +84,7 @@ function renderizarListaCompleta() {
     const container = document.getElementById('visualList');
     container.innerHTML = '';
     
+    // 1. Topo: Erros e Extras
     bipsExtras.forEach(e => {
         const item = document.createElement('div');
         item.className = 'bip-item';
@@ -94,6 +95,7 @@ function renderizarListaCompleta() {
         container.appendChild(item);
     });
 
+    // 2. Meio: Concluidos (Ordem inversa para o último ficar no topo)
     const concluidos = Array.from(bipsRealizados)
         .filter(id => basePrevista.includes(id))
         .reverse(); 
@@ -108,6 +110,7 @@ function renderizarListaCompleta() {
         container.appendChild(item);
     });
 
+    // 3. Base: Pendentes
     const pendentes = basePrevista.filter(id => !bipsRealizados.has(id));
     pendentes.forEach(id => {
         const item = document.createElement('div');
@@ -120,22 +123,22 @@ function renderizarListaCompleta() {
     });
 }
 
-// --- ATUALIZAÇÃO DO RESUMO ---
+// --- ATUALIZAÇÃO DO RESUMO (Painel Inferior) ---
 function atualizarResumo() {
     const total = basePrevista.length;
     const corretos = basePrevista.filter(id => bipsRealizados.has(id)).length;
     const aMais = bipsExtras.filter(e => e.tipo === 'A Mais').length;
     const invalidos = bipsExtras.filter(e => e.tipo === 'Inválido').length;
 
-    // Atualiza o contador central 0/X
+    // 1. Atualiza o contador central 0/X (Progresso)
     const elProgresso = document.getElementById('progresso-concluido');
     if (elProgresso) {
         elProgresso.innerText = `${corretos}/${total}`;
-        // Fica verde apenas quando a rota estiver 100% concluída
+        // Fica verde apenas se completar a rota
         elProgresso.style.color = (corretos === total && total > 0) ? "#00a650" : "#333";
     }
 
-    // Atualiza os contadores das pontas
+    // 2. Atualiza os alertas laterais
     if(document.getElementById('countAMais')) {
         document.getElementById('countAMais').innerText = aMais;
     }

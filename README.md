@@ -1,4 +1,7 @@
-# Auditoria Standalone - Mercado Livre (Offline)
+## 📦 OfflineTools-MELI(em desenvolvimento)
+Hub de ferramentas logísticas para suporte operacional.
+
+## 01. Auditoria de Rotas
 
 Ferramenta de suporte operacional desenvolvida para auxiliar no processo de auditoria/aduana e conferência de carrinhos, especialmente em situações com problemas sistêmicos, divergências na contagem ou erros no envio de contagem pelo motorista.
 
@@ -22,6 +25,8 @@ O principal objetivo é garantir que a rota seja devidamente auditada, permitind
 - **HTML5 & CSS3:** Interface responsiva seguindo a identidade visual "Mercado Livre".
 - **JavaScript (Vanilla):** Lógica de processamento de dados, manipulação de DOM e Regex.
 - **Git & GitHub:** Versionamento e deploy.
+
+---
 
 ##  Como Usar
 
