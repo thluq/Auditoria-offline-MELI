@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditoria Offline - MELI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.19.5/mercadolibre/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header class="kraken-nav-header">
+        <div class="header-content">
+            <div class="logo-container">
+                <a href="index.html" class="logo-link">
+                    <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.19.5/mercadolibre/logo__large_plus.png" alt="Voltar" class="logo-img">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-wrapper"> 
+        <div class="audit-layout">
+            <div id="step-config" class="audit-card">
+                <h2>Configurar Base de IDs (pacotes)</h2>
+                <label style="cursor: pointer; color: #3483fa; font-weight: 600; font-size: 0.9rem;">
+                    📁 Importar Arquivo
+                    <input type="file" id="fileInput" style="display:none" onchange="lerArquivo(this)">
+                </label>
+                <textarea id="base-ids" placeholder="Cole os IDs aqui (um por linha)..."></textarea>
+                <button class="btn-primary" onclick="iniciarAuditoria()">INICIAR CONFERÊNCIA</button>
+            </div>
+
+            <div id="step-audit" class="hidden">
+                <div class="audit-card">
+                    <div class="menu-options">
+                        <button class="dots-btn" onclick="toggleMenu(event)">⋮</button>
+                        <div id="dropdown" class="options-dropdown">
+                            <button onclick="voltarParaConfig()">⚙️ Editar Lista de IDs</button>
+                            <button onclick="exportarCSV()">📥 Baixar Resultados (CSV)</button>
+                        </div>
+                    </div>
+                    <h2>Auditoria Ativa</h2>
+                    <div class="scan-container">
+                        <input type="text" id="scanInput" placeholder="Bipe o ID aqui..." autocomplete="off">
+                    </div>
+                    <div class="bip-list" id="visualList"></div>
+                    <div class="res-summary">
+                        <div><span class="res-num" id="countBase">0</span><small>Pacotes</small></div>
+                        <div><span class="res-num" id="countCorretos" style="color: #00a650;">0</span><small>Corretos</small></div>
+                        <div><span class="res-num" id="countFaltante" style="color: #f23d4f;">0</span><small>Faltante</small></div>
+                        <div><span class="res-num" id="countAMais" style="color: #3483fa;">0</span><small>A Mais</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-legal">
+            <p>Dev. <strong>Thiago Lucas</strong> (SSP20)</p>
+            <hr>
+            <p class="disclaimer">
+Esta ferramenta é um projeto independente de automação local e não constitui um sistema ou produto oficial. Todos os direitos sobre logotipos, marcas e os nomes "Mercado Livre" e "Mercado Envios" pertencem exclusivamente à Ebazar.com.br. LTDA. O uso da identidade visual serve apenas para facilitar a familiaridade operacional dos colaboradores, sem qualquer intenção de uso indevido, comercialização ou violação de propriedade intelectual.
+            </p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

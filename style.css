@@ -1,0 +1,89 @@
+/* Layout Base */
+html, body { height: 100%; }
+
+body {
+    margin: 0; padding: 0;
+    background-color: #ededed;
+    font-family: "Proxima Nova", -apple-system, sans-serif;
+    display: flex; flex-direction: column;
+}
+
+.content-wrapper { flex: 1 0 auto; }
+.hidden { display: none !important; }
+
+/* Header */
+.kraken-nav-header {
+    background-color: #ffe600;
+    height: 54px;
+    display: flex; align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 1px 0 0 rgba(0,0,0,.1);
+    position: fixed; top: 0; width: 100%;
+    z-index: 1000; box-sizing: border-box;
+}
+
+.header-content {
+    display: flex; justify-content: space-between; align-items: center;
+    width: 100%; max-width: 1200px; margin: 0 auto;
+}
+
+.logo-container { display: flex; align-items: center; min-width: 180px; }
+.logo-img { height: 34px; width: auto; border: none; }
+
+/* Home & Grid */
+.kraken-main { margin-top: 80px; }
+.menu-grid {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 32px; padding: 20px; max-width: 1200px; margin: 0 auto;
+}
+
+.menu-card {
+    text-decoration: none; display: flex; flex-direction: column;
+    align-items: center; transition: transform 0.2s; width: 180px;
+}
+.menu-card:hover { transform: translateY(-5px); }
+
+.card-circle {
+    background-color: #f7e436; width: 100px; height: 100px;
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    margin-bottom: 14px; overflow: hidden;
+}
+.card-circle img { max-width: 90%; max-height: 90%; object-fit: contain; }
+
+.card-name { color: #333; font-size: 15px; text-align: center; font-weight: 600; margin: 0; }
+
+/* Auditoria */
+.audit-layout { padding: 20px; max-width: 1000px; margin: 80px auto 0; position: relative; }
+.audit-card { background: #fff; padding: 24px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 20px; position: relative; }
+
+.menu-options { position: absolute; top: 20px; right: 20px; }
+.dots-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #666; padding: 5px 10px; border-radius: 50%; }
+
+.options-dropdown { 
+    position: absolute; right: 0; top: 40px; background: white; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); border-radius: 8px; 
+    width: 220px; z-index: 100; display: none; border: 1px solid #eee;
+}
+.options-dropdown button { width: 100%; padding: 12px 16px; border: none; background: none; text-align: left; cursor: pointer; color: #333; }
+.options-dropdown button:hover { background: #f5f5f5; }
+
+.btn-primary { width: 100%; padding: 15px; background: #3483fa; color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; }
+textarea { width: 100%; min-height: 250px; border: 1px solid #ddd; border-radius: 6px; padding: 12px; font-family: monospace; resize: vertical; margin: 15px 0; }
+.scan-container input { width: 100%; padding: 12px; border: 2px solid #3483fa; border-radius: 6px; font-size: 1.1rem; outline: none; box-sizing: border-box; }
+
+.bip-list { border: 1px solid #eee; border-radius: 6px; max-height: 350px; overflow-y: auto; margin-top: 15px; background: #fafafa; }
+.bip-item { display: flex; align-items: center; gap: 12px; padding: 12px; border-bottom: 1px solid #eee; background: #fff; }
+.status-dot { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-weight: bold; font-size: 0.8rem; }
+.dot-ok { background: #00a65020; color: #00a650; }
+.dot-err { background: #f23d4f20; color: #f23d4f; }
+
+.res-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; text-align: center; margin-top: 20px; border-top: 2px solid #eee; padding-top: 15px; }
+.res-num { font-size: 1.5rem; font-weight: bold; display: block; color: #333; }
+.res-summary small { color: #666; font-weight: 600; text-transform: uppercase; font-size: 10px; }
+
+/* Footer  */
+.main-footer { flex-shrink: 0; width: 100%; padding: 30px 20px; background-color: #fff; border-top: 1px solid #e6e6e6; text-align: center; box-sizing: border-box; }
+.footer-legal { max-width: 800px; margin: 0 auto; color: #666; font-size: 13px; }
+.footer-legal hr { border: 0; border-top: 1px solid #eee; margin: 15px auto; width: 50%; }
+.disclaimer { font-size: 11px; color: #999; text-align: justify; }
