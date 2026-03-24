@@ -2,7 +2,7 @@ let basePrevista = [];
 let bipsRealizados = new Set();
 let bipsExtras = []; 
 
-// --. MENU ---
+// --- MENU ---
 function toggleMenu(e) {
     if (e) e.stopPropagation();
     const drop = document.getElementById('dropdown');
@@ -17,10 +17,9 @@ window.addEventListener('click', function(event) {
     }
 });
 
-// --- CRIAÇÃO DA BASE  ---
+// --- CRIAÇÃO DA BASE ---
 function iniciarAuditoria() {
     const rawText = document.getElementById('base-ids').value;
-    // Pega qualquer sequência de 11 dígitos que inicie com 4 (fatiando se necessário)
     const regexBase = /4\d{10}/g; 
     const idsExtraidos = rawText.match(regexBase);
 
@@ -49,14 +48,12 @@ function lerArquivo(input) {
     reader.readAsText(file);
 }
 
-// ---AUDITORIA ATIVA (Bipagem) ---
+// --- AUDITORIA ATIVA (Bipagem) ---
 function adicionarBip(idSujo) {
-    // Bloqueio Rigoroso de DANFE (44 dígitos puramente numéricos)
     if (/^\d{44}$/.test(idSujo)) {
         bipsExtras.unshift({ id: "DANFE DETECTADA", idFull: idSujo, tipo: 'Inválido', cor: '#f23d4f' });
     } 
     else {
-        // limpeza de QR Code: busca 4+10 no meio de qualquer texto
         const matchMeli = idSujo.match(/4\d{10}/);
         
         if (matchMeli) {
@@ -74,7 +71,6 @@ function adicionarBip(idSujo) {
                 bipsExtras.unshift({ id: idLimpo, idFull: idLimpo, tipo: 'A Mais', cor: '#ff9800' });
             }
         } else {
-            // Caso não encontre padrão de ID válido
             const display = idSujo.length > 20 ? idSujo.substring(0, 20) + "..." : idSujo;
             bipsExtras.unshift({ id: display, idFull: idSujo, tipo: 'Inválido', cor: '#f23d4f' });
         }
@@ -88,7 +84,6 @@ function renderizarListaCompleta() {
     const container = document.getElementById('visualList');
     container.innerHTML = '';
     
-    // Erros e Extras (Sempre no topo)
     bipsExtras.forEach(e => {
         const item = document.createElement('div');
         item.className = 'bip-item';
@@ -99,7 +94,6 @@ function renderizarListaCompleta() {
         container.appendChild(item);
     });
 
-    // 2. MEIO: IDs Corretos (O último bipado fica no topo desta seção)
     const concluidos = Array.from(bipsRealizados)
         .filter(id => basePrevista.includes(id))
         .reverse(); 
@@ -114,7 +108,6 @@ function renderizarListaCompleta() {
         container.appendChild(item);
     });
 
-    //  IDs Pendentes (Cinza opaco)
     const pendentes = basePrevista.filter(id => !bipsRealizados.has(id));
     pendentes.forEach(id => {
         const item = document.createElement('div');
@@ -127,15 +120,31 @@ function renderizarListaCompleta() {
     });
 }
 
-// --- EXPORTAÇÃO E RESUMO ---
+// --- ATUALIZAÇÃO DO RESUMO ---
 function atualizarResumo() {
+    const total = basePrevista.length;
     const corretos = basePrevista.filter(id => bipsRealizados.has(id)).length;
-    document.getElementById('countBase').innerText = basePrevista.length;
-    document.getElementById('countCorretos').innerText = corretos;
-    document.getElementById('countFaltante').innerText = basePrevista.length - corretos;
-    document.getElementById('countAMais').innerText = bipsExtras.filter(e => e.tipo === 'A Mais').length;
+    const aMais = bipsExtras.filter(e => e.tipo === 'A Mais').length;
+    const invalidos = bipsExtras.filter(e => e.tipo === 'Inválido').length;
+
+    // Atualiza o contador central 0/X
+    const elProgresso = document.getElementById('progresso-concluido');
+    if (elProgresso) {
+        elProgresso.innerText = `${corretos}/${total}`;
+        // Fica verde apenas quando a rota estiver 100% concluída
+        elProgresso.style.color = (corretos === total && total > 0) ? "#00a650" : "#333";
+    }
+
+    // Atualiza os contadores das pontas
+    if(document.getElementById('countAMais')) {
+        document.getElementById('countAMais').innerText = aMais;
+    }
+    if(document.getElementById('countInvalidos')) {
+        document.getElementById('countInvalidos').innerText = invalidos;
+    }
 }
 
+// --- EXPORTAÇÃO ---
 function exportarCSV() {
     let csv = "ID,Status\n";
     basePrevista.forEach(id => {

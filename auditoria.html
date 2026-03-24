@@ -21,12 +21,12 @@
     <div class="content-wrapper"> 
         <div class="audit-layout">
             <div id="step-config" class="audit-card">
-                <h2>Configurar Base de IDs (pacotes)</h2>
-                <label style="cursor: pointer; color: #3483fa; font-weight: 600; font-size: 0.9rem;">
-                    📁 Importar Arquivo
+                <h2>Configurar Base de IDs</h2>
+                <label style="cursor: pointer; color: #3483fa; font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 10px;">
+                    📁 Importar Arquivo (TXT/CSV)
                     <input type="file" id="fileInput" style="display:none" onchange="lerArquivo(this)">
                 </label>
-                <textarea id="base-ids" placeholder="Cole os IDs aqui (um por linha)..."></textarea>
+                <textarea id="base-ids" placeholder="Cole os IDs aqui ou importe um arquivo..."></textarea>
                 <button class="btn-primary" onclick="iniciarAuditoria()">INICIAR CONFERÊNCIA</button>
             </div>
 
@@ -39,17 +39,36 @@
                             <button onclick="exportarCSV()">📥 Baixar Resultados (CSV)</button>
                         </div>
                     </div>
+
                     <h2>Auditoria Ativa</h2>
+                    
+                    <div class="main-counter">
+                        <span id="progresso-concluido">0/0</span>
+                        <small>Progresso da Rota</small>
+                    </div>
+
                     <div class="scan-container">
                         <input type="text" id="scanInput" placeholder="Bipe o ID aqui..." autocomplete="off">
                     </div>
+
                     <div class="bip-list" id="visualList"></div>
+
                     <div class="res-summary">
-                        <div><span class="res-num" id="countBase">0</span><small>Pacotes</small></div>
-                        <div><span class="res-num" id="countCorretos" style="color: #00a650;">0</span><small>Corretos</small></div>
-                        <div><span class="res-num" id="countFaltante" style="color: #f23d4f;">0</span><small>Faltante</small></div>
-                        <div><span class="res-num" id="countAMais" style="color: #3483fa;">0</span><small>A Mais</small></div>
-                    </div>
+    <div class="res-column">
+        <span class="res-num" id="countAMais" style="color: #ff9800;">0</span>
+        <small>A Mais</small>
+    </div>
+    
+    <div class="res-column main-progress">
+        <span id="progresso-concluido">0/0</span>
+        <small>Progresso</small>
+    </div>
+    
+    <div class="res-column">
+        <span class="res-num" id="countInvalidos" style="color: #f23d4f;">0</span>
+        <small>Inválidos</small>
+    </div>
+</div>
                 </div>
             </div>
         </div>
@@ -60,10 +79,11 @@
             <p>Dev. <strong>Thiago Lucas</strong> (SSP20)</p>
             <hr>
             <p class="disclaimer">
-Esta ferramenta é um projeto independente de automação local e não constitui um sistema ou produto oficial. Todos os direitos sobre logotipos, marcas e os nomes "Mercado Livre" e "Mercado Envios" pertencem exclusivamente à Ebazar.com.br. LTDA. O uso da identidade visual serve apenas para facilitar a familiaridade operacional dos colaboradores, sem qualquer intenção de uso indevido, comercialização ou violação de propriedade intelectual.
+                Projeto independente de automação local. Identidade visual utilizada para facilitar a familiaridade operacional.
             </p>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
