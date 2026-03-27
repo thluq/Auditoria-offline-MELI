@@ -15,6 +15,13 @@
                     <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.19.5/mercadolibre/logo__large_plus.png" alt="Voltar" class="logo-img">
                 </a>
             </div>
+            
+            <div id="header-menu" class="menu-options hidden">
+                <button class="dots-btn" onclick="toggleMenu(event)">⋮</button>
+                <div id="dropdown" class="options-dropdown">
+                    <button onclick="voltarParaConfig()">⚙️ Editar Base</button>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -22,46 +29,40 @@
         <div class="audit-layout">
             <div id="step-config" class="audit-card">
                 <h2>Configurar Base de IDs</h2>
-                <label style="cursor: pointer; color: #3483fa; font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 10px;">
-                    📁 Importar Arquivo (TXT/CSV)
+                <label style="cursor: pointer; color: #3483fa; font-weight: 600; font-size: 0.9rem;">
+                    📁 Importar Arquivo
                     <input type="file" id="fileInput" style="display:none" onchange="lerArquivo(this)">
                 </label>
-                <textarea id="base-ids" placeholder="Cole os IDs aqui ou importe um arquivo..."></textarea>
+                <textarea id="base-ids" placeholder="Cole os IDs aqui (um por linha)..."></textarea>
                 <button class="btn-primary" onclick="iniciarAuditoria()">INICIAR CONFERÊNCIA</button>
             </div>
 
             <div id="step-audit" class="hidden">
-                <div class="audit-card">
-                    <div class="menu-options">
-                        <button class="dots-btn" onclick="toggleMenu(event)">⋮</button>
-                        <div id="dropdown" class="options-dropdown">
-                            <button onclick="voltarParaConfig()">⚙️ Editar Lista de IDs</button>
-                            <button onclick="exportarCSV()">📥 Baixar Resultados (CSV)</button>
-                        </div>
-                    </div>
-
-                    <h2>Auditoria Ativa</h2>
+                <div id="status-screen" class="status-screen-default">
                     
-                    <div class="scan-container">
-                        <input type="text" id="scanInput" placeholder="Bipe o ID aqui..." autocomplete="off">
+                    <div class="feedback-container">
+                        <div id="feedback-icon">
+                            <img src="icons/audit-package-icon.svg" alt="Pacote">
+                        </div>
+                        <h1 id="feedback-title">Escaneie o código</h1>
+                        <p id="feedback-msg">Aguardando bipagem...</p>
                     </div>
 
-                    <div class="bip-list" id="visualList"></div>
+                    <input type="text" id="scanInput" class="invisible-input" autofocus autocomplete="off">
 
-                    <div class="res-summary">
-                        <div class="res-column">
-                            <span class="res-num" id="countAMais" style="color: #ff9800;">0</span>
-                            <small>A Mais</small>
+                    <div class="bottom-drawer" id="drawer">
+                        <div class="drawer-handle" onclick="toggleDrawer()"></div>
+                        
+                        <div class="drawer-summary" onclick="toggleDrawer()">
+                            <p><span id="progresso-concluido">0/0</span>pacotes no carrinho</p>
                         </div>
                         
-                        <div class="res-column main-progress">
-                            <span id="progresso-concluido">0/0</span>
-                            <small>Progresso</small>
+                        <div class="drawer-content">
+                            <div id="visualList"></div>
                         </div>
-                        
-                        <div class="res-column">
-                            <span class="res-num" id="countInvalidos" style="color: #f23d4f;">0</span>
-                            <small>Inválidos</small>
+
+                        <div class="drawer-footer">
+                            <button class="btn-primary" onclick="exportarCSV()">TERMINAR DE ESCANEAR</button>
                         </div>
                     </div>
                 </div>
