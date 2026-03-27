@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Etiqueta Master - Meli</title>
+    <link rel="icon" type="image/svg+xml" href="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.19.5/mercadolibre/favicon.svg">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="etqmaster.css">
+    
+    <script src="libs/JsBarcode.all.min.js"></script>
+    <script src="libs/qrcode.min.js"></script>
+    <script src="etqmaster.js" defer></script>
+</head>
+<body>
+    <header class="kraken-nav-header">
+        <div class="header-content">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.19.5/mercadolibre/logo__large_plus.png" class="logo-img" alt="Mercado Livre">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="master-container">
+        <div class="input-panel">
+            <h2>Gerador de Etiqueta(beta)</h2>
+
+            <div class="input-group">
+                <label>Tipo de Endereço(Residencial ou Comercial)</label>
+                <div class="address-type-selector">
+                    <input type="radio" id="type-residential" name="address-type" value="R" checked onchange="updateLabel()">
+                    <label for="type-residential" class="selector-btn residencial">R</label>
+                    
+                    <input type="radio" id="type-commercial" name="address-type" value="C" onchange="updateLabel()">
+                    <label for="type-commercial" class="selector-btn comercial">C</label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>1. Informações Seller</label>
+                <textarea id="in-header-free" rows="4" placeholder="Digite aqui as informações do vendedor..." oninput="updateLabel()"></textarea>
+            </div>
+            
+            <div class="input-group">
+                <label>2. Facility Destino</label>
+                <input type="text" id="in-ssp" placeholder="Ex: SSP20" oninput="updateLabel()">
+            </div>
+
+            <div class="input-group">
+                <label>3. Origem</label>
+                <input type="text" id="in-fsp" placeholder="Ex: FSP04" oninput="updateLabel()">
+            </div>
+            
+            <div class="input-group">
+                <label style="color: #3483fa; font-weight: bold;">4. ID do Pacote</label>
+                <input type="text" id="in-id" placeholder="Ex: 40000000001" oninput="updateLabel()">
+            </div>
+
+            <div class="input-group">
+                <label>5. Número do Cluster</label>
+                <input type="text" id="in-cluster" placeholder="Ex: 45" oninput="updateLabel()">
+            </div>
+
+            <div class="input-group">
+                <label>6. Promessa</label>
+                <input type="text" id="in-date" placeholder="Ex: DOM 22/03/2026" oninput="updateLabel()">
+            </div>
+
+            <div class="input-group">
+                <label>7. Informações Buyer</label>
+                <textarea id="in-recipient-free" rows="4" placeholder="Cole ou digite aqui as informações do comprador..." oninput="updateLabel()"></textarea>
+            </div>
+
+            <div class="button-group">
+                <button class="btn-primary" onclick="window.print()" style="width: 100%; padding: 18px; font-weight: bold; font-size: 16px; cursor: pointer; border-radius: 8px; background-color: #3483fa; color: white; border: none;">
+                    IMPRIMIR ETIQUETA
+                </button>
+            </div>
+            <div style="height: 50px;"></div>
+        </div>
+
+        <div class="label-view-area">
+            <div class="label-preview" id="printable-label">
+                
+                <div class="header-label-container">
+                    <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.19.5/mercadolibre/favicon.svg" class="mini-logo-hand" alt="Meli Icon">
+                    <div class="label-free-zone" id="out-header-free"></div>
+                </div>
+
+                <div class="barcode-section">
+                    <div class="origin-badge" id="out-fsp">FSP--</div>
+                    
+                    <svg id="barcode"></svg>
+                    
+                    <div class="barcode-text-container" id="barcode-text-manual"></div>
+                    
+                    <div class="facility-display" id="out-ssp">---</div>
+
+                    <div class="cluster-row" id="out-cluster-combined">FSP-- > SSP-- > --</div>
+
+                    <div class="delivery-date-row" id="out-date">--- 00/00/0000</div>
+                </div>
+                    <div class="footer-separator"></div>
+                <div class="footer-area">
+                    <div class="recipient-zone" id="out-recipient-free"></div>
+                    <div class="qr-zone">
+                        <div id="qrcode"></div>
+                        <div class="address-type-indicator" id="out-address-type">R</div>
+                    </div>
+                </div>
+
+            </div> 
+        </div> 
+    </div> 
+</body>
+</html>
