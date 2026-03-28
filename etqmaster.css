@@ -32,8 +32,12 @@ html, body {
     background-color: #e5e5e5;
     height: 100%;
     overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
-
+.label-view-area::-webkit-scrollbar {
+    display: none;
+    }
 .label-preview {
     width: 100mm;
     height: 150mm;
@@ -47,6 +51,7 @@ html, body {
     color: black;
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
     border: 2px solid black;
+    overflow: hidden !important;
 }
 
 .header-label-container {
@@ -224,6 +229,8 @@ textarea, input[type="text"] {
         background: none; 
         display: block; 
         padding: 0; 
+        overflow: visible !important;
+        display: block !important;
     }
 
     .label-preview {
@@ -231,8 +238,13 @@ textarea, input[type="text"] {
         margin: 0;
         box-shadow: none;
         border: 1px solid black !important;
+        overflow: visible !important;
+        display: block !important;
     }
 
+    ::-webkit-scrollbar {
+        display: none !important; }
+    
     .footer-separator {
         display: block !important;
         border-top: 0.5px solid black !important;
