@@ -24,8 +24,8 @@ function updateLabel() {
     const addressType = document.querySelector('input[name="address-type"]:checked')?.value || "R";
 
     // --- PLACEHOLDERS VISUAIS ---
-    const placeholderRemetente = "MELI MELI - #100000010\nAv. Gustavo Machado 1234 Empresarial\nCajamar BR-SP 00000001\nVenda: 40028922";
-    const placeholderDestinatario = "DADOS FICITICIOS!!! THIAGO LUCAS\nEndereço: Rua Allan 666, Jardim Ibiti do Paço \nCEP: 1800-000\n Cidade de Destino: Sorocaba, São Paulo\n Complemento: Apto 1234";
+    const placeholderRemetente = "MELI MELI - #100000010\nAv. ------- ------ 1234 Empresarial\nCajamar BR-SP 00000001\nVenda: 40028922";
+    const placeholderDestinatario = "-----------------\nEndereço: Rua ------ 666, Jardim ------ ------ \nCEP: 1800-000\n Cidade de Destino: Sorocaba, São Paulo\n Complemento: Apto 1234";
 
     document.getElementById('out-header-free').innerText = headerText || placeholderRemetente;
     document.getElementById('out-recipient-free').innerText = recipientText || placeholderDestinatario;
