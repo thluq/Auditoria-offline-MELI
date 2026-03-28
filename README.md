@@ -1,7 +1,9 @@
-## 📦 OfflineTools-MELI (in development)  
+### 📦 OfflineTools-MELI (in development)  
 Logistics tools hub for operational support.
 
-## 01. Route Auditing
+---
+
+### 01. Route Auditing
 
 Operational support tool developed to assist in the balancing/audit process and cart checking, especially in situations involving system issues, counting discrepancies, or errors when drivers submit package counts.
 
@@ -21,10 +23,18 @@ The main goal is to ensure that the route is properly audited, allowing the oper
 - **Offline Mode:** Runs entirely in the browser, with no need for a database or internet connection after the initial load.
 
 
-## 2. Master Label Generator (In Development)
+### 2. Label Generator 
 
-Module for local generation of master labels, designed for situations where reprinting via *Logistics* is unavailable (file missing) or for creating *Dummy Boxes*.
+Module for local generation of package labels, designed for situations where reprinting through *Logistics* is unavailable (file missing) or for creating *Dummy Boxes*.
 
+## Features
+
+* **Input:** Fields for destination facility, origin facility, cluster, promise, and Seller/Buyer information.
+* **Barcode and QR Code Generation:** Local processing using lightweight libraries (JsBarcode and QRCode.js).
+
+
+
+---
 
 ## Technologies Used
 
@@ -48,7 +58,10 @@ Module for local generation of master labels, designed for situations where repr
 
 **Thiago Lucas Nunes Gonçalves**(SSP20)  
 *Computer Engineering Student*  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/thiago-lucas-nunes-goncalves)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/thluq)
 
+---
 ---
 
 ##  Disclaimer
