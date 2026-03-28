@@ -49,7 +49,7 @@ Module for local generation of package labels, designed for situations where rep
 
 **Thiago Lucas Nunes Gonçalves**(SSP20)  
 *Computer Engineering Student*  
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](linkedin.com/in/thiago-lucas-76b293208/)
+[LinkedIn](linkedin.com/in/thiago-lucas-76b293208/)
 
 ---
 ---
