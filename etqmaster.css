@@ -268,7 +268,7 @@ textarea, input[type="text"], input[type="date"] {
 
 .origin-tag {
     position: absolute;
-    top: 2px;          
+    top: 5px;          
     right: 5px;         
     font-size: 7px;    
     font-weight: 600;
