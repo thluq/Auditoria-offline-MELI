@@ -26,8 +26,8 @@ function updateLabel() {
     const addressType = document.querySelector('input[name="address-type"]:checked')?.value || "R";
 
     // --- PLACEHOLDERS VISUAIS ---
-    const placeholderRemetente = "MELI MELI - #100000010\nAv. ------- ------ 1234 Empresarial\nCajamar BR-SP 00000001\nVenda: 40028922";
-    const placeholderDestinatario = "-----------------\nEndereço: Rua ------ 666, Jardim ------ ------ \nCEP: 1800-000\n Cidade de Destino: Sorocaba, São Paulo\n Complemento: Apto 1234";
+    const placeholderRemetente = "MELI MELI - #100000010\nAv. ------- ------ 1234 Empresarial\nCajamar BR-SP 00000001\nVenda: -------";
+    const placeholderDestinatario = "-----------------\nEndereço: Rua ------ 666, Jardim ------ ------ \nCEP: 1800-000\n Cidade de Destino: -------, -------\n Complemento: Apto ---";
 
     document.getElementById('out-header-free').innerText = headerText || placeholderRemetente;
     document.getElementById('out-recipient-free').innerText = recipientText || placeholderDestinatario;
@@ -99,3 +99,5 @@ function updateLabel() {
     }
     // Removido qualquer salvamento automático
 }
+
+console.log("%cPrivacy Note: This tool does not collect any data. Feel free to review the code!", "color: #3483fa; font-weight: bold;");
