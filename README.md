@@ -11,7 +11,6 @@ The main goal is to ensure that the route is properly audited, allowing the oper
 
 ## Features
 
-- **Real-Time Checklist:** The list of expected IDs is displayed on screen and automatically checked off as scans occur.  
 - **Smart Validation (Regex):** Automatically filters label scans (11 digits), treating out-of-pattern codes (such as 44-digit DANFEs) as "Invalid".   
 - **Duplicate Handling:** Removes repeated IDs from the database and alerts the user if the same package is scanned more than once.  
 - **CSV Export:** Generates a complete report containing verified, missing, and exception items.  
